@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>si.fri.rso</groupId>
+    <artifactId>iskanje</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>api</module>
+        <module>services</module>
+        <module>lib</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <kumuluzee.version>3.12.2</kumuluzee.version>
+        <kumuluzee-rest.version>1.5.1</kumuluzee-rest.version>
+        <kumuluzee-config.version>1.3.0</kumuluzee-config.version>
+        <postgresql.version>42.3.0</postgresql.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.kumuluz.ee</groupId>
+                <artifactId>kumuluzee-bom</artifactId>
+                <version>${kumuluzee.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.rest</groupId>
+                <artifactId>kumuluzee-rest-core</artifactId>
+                <version>${kumuluzee-rest.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>kumuluzee-config-consul</artifactId>
+                <groupId>com.kumuluz.ee.config</groupId>
+                <version>${kumuluzee-config.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>si.fri.rso</groupId>
+                <artifactId>iskanje-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>si.fri.rso</groupId>
+                <artifactId>iskanje-models</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>si.fri.rso</groupId>
+                <artifactId>iskanje-services</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>si.fri.rso</groupId>
+                <artifactId>iskanje-lib</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

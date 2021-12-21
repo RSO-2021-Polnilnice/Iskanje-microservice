@@ -1,0 +1,21 @@
+kumuluzee:
+  name: iskanje-service
+  env:
+    name: dev
+  version: 1.0.0
+  server:
+    http:
+      port: 8080
+    base-url: http://192.168.99.100:8080
+  config:
+    consul:
+      agent: http://192.168.99.100:8500
+  discovery:
+    consul:
+      agent: http://192.168.99.100:8500
+
+rest-properties:
+  maintenance-mode: false
+
+external-api:
+  distanceapi: http://www.mapquestapi.com/directions/v2/routematrix?key=o2AXh5wFGHwUVSg7q6TKNm9D61GBikii

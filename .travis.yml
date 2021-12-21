@@ -1,0 +1,21 @@
+sudo: required
+services:
+- docker
+language: java
+dist: bionic
+jdk:
+- openjdk14
+cache:
+  directories:
+  - "$HOME/.m2"
+env:
+  global:
+  - DOCKER_IMAGE=prporso/image-catalog:1.0.0-SNAPSHOT-$TRAVIS_JOB_NUMBER
+  - secure: jMiHALx7cMyaP347OT7ly14MVqo9GLrLSorBv3ii03vunFSlocOM5phb3FZB/E0xhrdAejHY7l9igbmy9hjJenIcJYxpCQE/fVfCFLBFChniu0XumU3KjJ+tZdOzJwrXoLwdz82VGenfy8lgVVju5kmaBHiy6hbbU1MLNETj08KTUwuzG8oj8DNZL0o1/cCIcb5Q7yPk4P1zh6YsMiImIIB1rMvlJnDS+ezV8d8eVmLL8HWSnYABY/jOi2K4ki2V6lViKl4T6i9msurAxKZb6t3oybWHJ029SnN4u6rWE2vHpBkW0fx0pWwOiTaqGjn5jVNpPpDF5L02mW2zlQ1fyVXPR+ZvB1n1l+o4mGAxLiZLCKH7s+F8XFUnNxyRjAwn46FehLg5+3hY3d1j+qmsCB+uimG5GlkX4Jw19ra3wH34U2vrtmBh43UkmBPlmJ23Jur/qrgD/jwMI0K1/8GBNC6mAoK6O2GdnM8MTZvzSOjfNTyrto5B29IRBLApZGrtwpAVgaBFN5YhNpts1I9n7byFS6utBBfAGyThv6osBIbY6QtT9NgMJ7Iyg5pRMqBaQVSHRh9/dVY97XKnvluEkwQsG+GUuoxNANwTO1I7onrWtejMyP8UhhPuKq25D4m2s5eLATbPxfL7eIGkCgjMKJn3zxM8CLK9+2AK8kJ3tCQ=
+  - secure: P8iPqU0uM9mVDTYLEMhIwECXEoXjJPjULpSh4rRrxfztF2q6eP//ApMLYGFbRCPvWTpXPb/+8c++Q4Y2CwkH3R0kGLEhYKE/hqAalPp+Xr/KjzOl8NaQxZh7F8Rzbb49soR5vMB/gS8A9klRW5uDFonGTN1JIIzYqrHxTUt/KKyWmUPbO0UehVsmvnQ21vUauf0SoQ7vXex1+Vaq5yps2Yc2BDFblST5HtksU+a0o/zEf7lGmlHtDzoeQ1z7xBxnIEgCqUbJfcGZdfDDPJhlMJz3hmfNoWEP1STW85BjtoRG7BvDEXCo68HIOa9+XTj4nFJyT/J3zpBzLeeAK2y+yIWT6bc3sin0lV2lb5q95uCn68liNgFVDCNBLsDoGiZKNTJSFp07Qt6FYNKbfF/Xy9fWXJ5DV6nO5JnHhxPIE+WGzuMtDRZNxfcPWIVZM3/RNIIR+md/Ry1yAygrLTSgnuTXuWwKsBwU89xt6QZ00r47DpcF+JD26tk6uKARmKjWTYDPSZXGKBTAUexHkAVwEDhVRCrc6gL9BBL5K4Nq/QljLomP8b9ZCbXRXJh+j+KWwP9OmbkUh7b41hZyFMfUTtdf3SvqmalRsXuuOB+KQCjFjBWVCSCOZuxAGZaG6kGmWW/JQshaUgUZ0ZMAyCYn9AWw0DY3/I275whExPpWpr8=
+script:
+- mvn clean package -U
+- docker build -t "$DOCKER_IMAGE" .
+after_success:
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- docker push "$DOCKER_IMAGE"
