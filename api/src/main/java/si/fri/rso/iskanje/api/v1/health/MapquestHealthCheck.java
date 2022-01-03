@@ -23,7 +23,7 @@ public class MapquestHealthCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
         if (restProperties.getMaintenanceModeQuestApi()) {
-            return HealthCheckResponse.down(CustomHealthCheck.class.getSimpleName());
+            return HealthCheckResponse.down(MapquestHealthCheck.class.getSimpleName());
         }
 
         try {

@@ -9,10 +9,10 @@ kumuluzee:
     base-url: http://192.168.99.100:8080
   config:
     consul:
-      agent: http://192.168.99.100:8500
+      agent: http://consul:8500
   discovery:
     consul:
-      agent: http://192.168.99.100:8500
+      agent: http://consul:8500
   health:
     checks:
       data-source-health-check:
@@ -30,3 +30,4 @@ rest-properties:
 
 external-api:
   distanceapi: http://www.mapquestapi.com/directions/v2/routematrix?key=o2AXh5wFGHwUVSg7q6TKNm9D61GBikii
+  polnilniceapi: http://polnilnice/v1/polnilnice
