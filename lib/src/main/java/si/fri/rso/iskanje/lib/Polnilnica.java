@@ -9,7 +9,7 @@ public class Polnilnica {
     private Double lokacijaLat;
     private Double lokacijaLng;
     private Double razdalja;
-    private Integer čas;
+    private Integer cas;
     private String mesto;
     private String ulica;
     private List<Termin> termini;
@@ -55,12 +55,12 @@ public class Polnilnica {
         this.razdalja = razdalja;
     }
 
-    public Integer getČas() {
-        return čas;
+    public Integer getCas() {
+        return cas;
     }
 
-    public void setČas(Integer čas) {
-        this.čas = čas;
+    public void setCas(Integer cas) {
+        this.cas = cas;
     }
 
     public String getMesto() {

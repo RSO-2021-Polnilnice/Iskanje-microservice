@@ -14,9 +14,21 @@ public class RestProperties {
 
     @ConfigValue(watch = true)
     private Boolean maintenanceMode;
-    
 
+    @ConfigValue(watch = true)
+    private Boolean maintenanceModeQuestApi;
+
+    @ConfigValue(watch = true)
     private Boolean broken;
+
+    public Boolean getMaintenanceModeQuestApi() {
+        return this.maintenanceModeQuestApi;
+    }
+
+    public void setMaintenanceModeQuestApi(final Boolean maintenanceModeQuestApi) {
+        this.maintenanceModeQuestApi = maintenanceModeQuestApi;
+    }
+
 
     public Boolean getMaintenanceMode() {
         return this.maintenanceMode;
